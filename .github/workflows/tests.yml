@@ -1,0 +1,32 @@
+name: test
+on: [push]
+jobs:
+  run_tests:
+    strategy:
+      matrix:
+        postgres_version: [9.4, 9.5, 9.6, 10, 11, 12, 13]
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: "postgres:${{ matrix.postgres_version }}"
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+    env:
+      PGUSER: postgres
+      PGHOST: localhost
+      PGPASSWORD: postgres
+      PGDATABASE: postgres
+      PGPORT: 5432
+    steps:
+      - uses: actions/checkout@v2
+      # easiest to just use nodejs here rather than messing with
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - working-directory: ./tests
+        run: npm install
+      - working-directory: ./tests
+        run: npm test
+

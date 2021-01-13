@@ -278,7 +278,7 @@ BEGIN
 
   ELSEIF columns[1] = '__changes__' THEN
     -- gather any extra columns provided
-    FOREACH array_text IN ARRAY columns[2:] LOOP
+    FOREACH array_text IN ARRAY columns[2:array_length(columns, 1)] LOOP
       ret_columns := array_append(ret_columns, array_text);
     END LOOP;
 

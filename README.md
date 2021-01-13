@@ -6,6 +6,8 @@ columns are returned with the notification. The notifications are sent with `pg_
 
 This is simply provided by copy-paste! 
 
+**Supports Postgres Version >= 9.5**
+
 ## Usage
 The recommended way to use this is with the entire [`notifications.sql`](./notifications.sql) schema; which 
 provides a table that can be modified to create/update/delete the notification triggers. This allows the user to 

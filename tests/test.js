@@ -9,11 +9,11 @@ async function getNewTestHelper() {
     const channelListeners = {};
 
     this.client = new Client({
-                               // user: 'postgres',
-                               // host: 'localhost',
-                               // database: 'postgres',
-                               // password: 'password',
-                               // port: 5432,
+                               user: 'postgres',
+                               host: 'localhost',
+                               database: 'postgres',
+                               password: 'postgres',
+                               port: 5432,
                              });
 
     /*
@@ -70,7 +70,7 @@ async function getNewTestHelper() {
       await this.client.connect();
       await this.client.query('DROP SCHEMA IF EXISTS public cascade');
       await this.client.query("CREATE SCHEMA public");
-      const createNotifsSql = fs.readFileSync(path.resolve('../notifs.sql')).toString();
+      const createNotifsSql = fs.readFileSync(path.resolve('../notifications.sql')).toString();
       await this.client.query(createNotifsSql);
       const testDataSql = fs.readFileSync(path.resolve('./testdata.sql')).toString();
       await this.client.query(testDataSql);

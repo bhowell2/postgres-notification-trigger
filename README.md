@@ -27,7 +27,7 @@ the function `fn_create_notification_trigger`, which will create the same trigge
 ```
 
 |column|type|description|
-|------|-----------|
+|------|----|-----------|
 | id | serial | Primary Key. Don't need to insert yourself unless you're a savage like that. |
 | table_name | text | Name of the table for which the notification trigger should be created. Cannot be null. |
 | channel_name | text | Name of the channel that will be notified of the event. Cannot be null. |
